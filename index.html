@@ -1,0 +1,553 @@
+<!DOCTYPE html>
+<html lang="es" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>EcoPunto | Reciclaje Inteligente Universitario</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Poppins', 'sans-serif'],
+                    },
+                    colors: {
+                        eco: {
+                            light: '#e6f4ea',
+                            DEFAULT: '#2e8b57', // Sea green from the poster's vibe
+                            dark: '#1e5c3a',
+                        },
+                        plastic: '#f97316', // Orange
+                        electronic: '#ec4899', // Pink
+                        bio: '#eab308', // Yellow
+                    }
+                }
+            }
+        }
+    </script>
+    <style>
+        /* Custom styles for animations */
+        .fade-in-up {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: opacity 0.6s ease-out, transform 0.6s ease-out;
+        }
+        .fade-in-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        .glass-card {
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+    </style>
+</head>
+<body class="bg-slate-50 text-slate-800 font-sans antialiased overflow-x-hidden">
+
+    <nav class="fixed w-full z-50 transition-all duration-300 bg-white/90 backdrop-blur-md shadow-sm" id="navbar">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex justify-between h-20 items-center">
+                <div class="flex items-center gap-2">
+                    <i class="fa-solid fa-leaf text-3xl text-eco"></i>
+                    <span class="font-bold text-2xl tracking-tight text-slate-900">Eco<span class="text-eco">Punto</span></span>
+                </div>
+                <div class="hidden md:flex space-x-8">
+                    <a href="#inicio" class="text-slate-600 hover:text-eco font-medium transition-colors">Inicio</a>
+                    <a href="#problema-ods" class="text-slate-600 hover:text-eco font-medium transition-colors">Propósito</a>
+                    <a href="#solucion" class="text-slate-600 hover:text-eco font-medium transition-colors">La Solución</a>
+                    <a href="#negocio" class="text-slate-600 hover:text-eco font-medium transition-colors">Plan de Negocios</a>
+                    <a href="#equipo" class="text-slate-600 hover:text-eco font-medium transition-colors">Integrantes de Equipo</a>
+                </div>
+                <!-- Mobile menu button -->
+                <div class="md:hidden flex items-center">
+                    <button id="mobile-menu-btn" class="text-slate-600 hover:text-eco focus:outline-none">
+                        <i class="fa-solid fa-bars text-2xl"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+        <!-- Mobile menu panel -->
+        <div id="mobile-menu" class="hidden md:hidden bg-white border-t border-slate-100">
+            <div class="px-2 pt-2 pb-3 space-y-1 sm:px-3">
+                <a href="#inicio" class="block px-3 py-2 text-slate-600 hover:bg-eco-light hover:text-eco rounded-md font-medium">Inicio</a>
+                <a href="#problema-ods" class="block px-3 py-2 text-slate-600 hover:bg-eco-light hover:text-eco rounded-md font-medium">Propósito</a>
+                <a href="#solucion" class="block px-3 py-2 text-slate-600 hover:bg-eco-light hover:text-eco rounded-md font-medium">La Solución</a>
+                <a href="#negocio" class="block px-3 py-2 text-slate-600 hover:bg-eco-light hover:text-eco rounded-md font-medium">Plan de Negocios</a>
+                <a href="#equipo" class="block px-3 py-2 text-slate-600 hover:bg-eco-light hover:text-eco rounded-md font-medium">Equipo</a>
+            </div>
+        </div>
+    </nav>
+
+    <section id="inicio" class="relative pt-32 pb-20 lg:pt-48 lg:pb-32 overflow-hidden">
+        <div class="absolute inset-0 z-0">
+            <!-- Decorative background elements -->
+            <div class="absolute top-0 right-0 -mr-20 -mt-20 w-96 h-96 rounded-full bg-eco-light opacity-50 blur-3xl"></div>
+            <div class="absolute bottom-0 left-0 -ml-20 -mb-20 w-80 h-80 rounded-full bg-yellow-100 opacity-50 blur-3xl"></div>
+        </div>
+        
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center fade-in-up">
+            <span class="inline-block py-1 px-3 rounded-full bg-eco-light text-eco font-semibold text-sm mb-6 border border-eco/20">
+                Innovación Tecnologica
+            </span>
+            <h1 class="text-5xl md:text-7xl font-extrabold tracking-tight text-slate-900 mb-6">
+                Recicla. Acumula. <span class="text-transparent bg-clip-text bg-gradient-to-r from-eco to-emerald-400">Gana.</span>
+            </h1>
+            <p class="mt-4 max-w-2xl text-xl text-slate-600 mx-auto mb-10">
+                Contenedores inteligentes para la comunidad de la Universidad de Guadalajara. Deposita tus desechos, escanea tu credencial y libera horas o gana beneficios.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4">
+                <a href="#solucion" class="px-8 py-4 border border-transparent text-lg font-medium rounded-xl text-white bg-eco hover:bg-eco-dark transition-all shadow-lg hover:shadow-xl hover:-translate-y-1">
+                    Conoce el Sistema
+                </a>
+                <a href="#negocio" class="px-8 py-4 border-2 border-slate-200 text-lg font-medium rounded-xl text-slate-700 bg-white hover:border-eco hover:text-eco transition-all shadow-sm">
+                    Ver Plan de Negocios
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <section id="problema-ods" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="grid grid-cols-1 lg:grid-cols-2 gap-16 items-center">
+                
+                <div class="fade-in-up">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-6">El Problema</h2>
+                    <p class="text-lg text-slate-600 mb-6">
+                        En las grandes instituciones educativas, la gestión de residuos es un desafío constante. A pesar de existir botes de basura, la falta de una cultura de separación de origen provoca que plásticos, electrónicos y orgánicos se mezclen, perdiendo su valor y contaminando el medio ambiente.
+                    </p>
+                    <p class="text-lg text-slate-600 mb-8">
+                        <strong>¿La causa principal?</strong> La falta de incentivos tangibles para que la comunidad estudiantil participe activamente en el reciclaje.
+                    </p>
+                    
+                    <div class="bg-red-50 border-l-4 border-red-500 p-6 rounded-r-xl">
+                        <div class="flex items-start">
+                            <div class="flex-shrink-0">
+                                <i class="fa-solid fa-triangle-exclamation text-red-500 text-2xl"></i>
+                            </div>
+                            <div class="ml-4">
+                                <h3 class="text-lg font-bold text-red-800">Dato de impacto</h3>
+                                <p class="mt-1 text-red-700">Miles de toneladas de residuos aprovechables terminan en vertederos debido a una mala clasificación desde la fuente.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="fade-in-up delay-100">
+                    <h2 class="text-3xl font-bold text-slate-900 mb-6">Nuestro Compromiso con los ODS</h2>
+                    <p class="text-slate-600 mb-8">EcoPuntos está diseñado directamente para impactar positivamente en los Objetivos de Desarrollo Sostenible de la ONU.</p>
+                    
+                    <div class="space-y-6">
+                        <!-- ODS 13 -->
+                        <div class="flex bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:shadow-md transition-shadow">
+                            <div class="flex-shrink-0 mr-6">
+                                <div class="w-20 h-20 rounded-xl bg-[#3F7E44] flex items-center justify-center shadow-lg">
+                                    <span class="text-white font-bold text-2xl">13</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900">Acción por el Clima</h3>
+                                <p class="mt-2 text-slate-600">Al desviar residuos de los vertederos y promover el reciclaje, reducimos las emisiones de gases de efecto invernadero asociadas con la producción de nuevos materiales y la descomposición de basura.</p>
+                            </div>
+                        </div>
+
+                        <!-- ODS 12 -->
+                        <div class="flex bg-slate-50 p-6 rounded-2xl border border-slate-100 hover:shadow-md transition-shadow">
+                            <div class="flex-shrink-0 mr-6">
+                                <div class="w-20 h-20 rounded-xl bg-[#BF8B2E] flex items-center justify-center shadow-lg">
+                                    <span class="text-white font-bold text-2xl">12</span>
+                                </div>
+                            </div>
+                            <div>
+                                <h3 class="text-xl font-bold text-slate-900">Producción y Consumo Responsables</h3>
+                                <p class="mt-2 text-slate-600">Fomentamos la economía circular asegurando que materiales plásticos y electrónicos regresen a la cadena de valor en lugar de ser desechados.</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </section>
+
+    <section id="solucion" class="py-20 bg-slate-900 text-white relative overflow-hidden">
+        <!-- Abstract background pattern -->
+        <div class="absolute inset-0 opacity-10">
+            <svg class="h-full w-full" xmlns="http://www.w3.org/2000/svg">
+                <defs>
+                    <pattern id="grid-pattern" width="40" height="40" patternUnits="userSpaceOnUse">
+                        <path d="M0 40V0H40" fill="none" stroke="currentColor" stroke-width="1"/>
+                    </pattern>
+                </defs>
+                <rect width="100%" height="100%" fill="url(#grid-pattern)"/>
+            </svg>
+        </div>
+
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+            <div class="text-center max-w-3xl mx-auto mb-16 fade-in-up">
+                <h2 class="text-4xl font-bold mb-4">La Solución: El Contenedor EcoPuntos</h2>
+                <p class="text-xl text-slate-300">Un sistema integral de hardware y software que transforma el acto de tirar la basura en una experiencia interactiva y gratificante.</p>
+            </div>
+
+            <!-- How it works diagram -->
+            <div class="bg-slate-800 rounded-3xl p-8 md:p-12 border border-slate-700 mb-16 shadow-2xl fade-in-up delay-100">
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-12 items-center text-center">
+                    <div>
+                        <div class="w-24 h-24 mx-auto bg-slate-700 rounded-full flex items-center justify-center mb-6 border-4 border-eco">
+                            <i class="fa-solid fa-microchip text-4xl text-eco"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">1. Sensores e IA</h3>
+                        <p class="text-slate-400">El contenedor cuenta con sensores que detectan e identifican el tipo de desecho depositado mediante electrónica e inteligencia artificial.</p>
+                    </div>
+                    <div>
+                        <div class="w-24 h-24 mx-auto bg-slate-700 rounded-full flex items-center justify-center mb-6 border-4 border-blue-400">
+                            <i class="fa-solid fa-id-card text-4xl text-blue-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">2. Identificación</h3>
+                        <p class="text-slate-400">El usuario acerca su credencial de la Universidad de Guadalajara al lector de la máquina, vinculando la acción a su perfil.</p>
+                    </div>
+                    <div>
+                        <div class="w-24 h-24 mx-auto bg-slate-700 rounded-full flex items-center justify-center mb-6 border-4 border-yellow-400">
+                            <i class="fa-solid fa-coins text-4xl text-yellow-400"></i>
+                        </div>
+                        <h3 class="text-xl font-bold mb-3">3. Recompensa</h3>
+                        <p class="text-slate-400">La pantalla confirma el depósito y el sistema suma "EcoPuntos" a la cuenta, los cuales pueden canjearse por liberación de horas de servicio.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="text-center mb-10 fade-in-up">
+                <h3 class="text-2xl font-bold">Clasificación de Residuos</h3>
+                <p class="text-slate-400 mt-2">Diferenciadores por color para una fácil identificación visual.</p>
+            </div>
+
+            <!-- Categories Cards -->
+            <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                <!-- Plasticos -->
+                <div class="glass-card bg-slate-800/50 p-8 rounded-3xl border-t-4 border-t-plastic hover:-translate-y-2 transition-transform fade-in-up">
+                    <div class="flex items-center justify-between mb-6">
+                        <h4 class="text-2xl font-bold text-plastic">Plásticos</h4>
+                        <div class="w-12 h-12 rounded-full bg-plastic/20 flex items-center justify-center text-plastic">
+                            <i class="fa-solid fa-bottle-water text-xl"></i>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 text-slate-300">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-plastic mr-3"></i> Botellas de PET</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-plastic mr-3"></i> Recipientes limpios</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-plastic mr-3"></i> Tapas</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-plastic mr-3"></i> Bolsas</li>
+                    </ul>
+                </div>
+
+                <!-- Electronicos -->
+                <div class="glass-card bg-slate-800/50 p-8 rounded-3xl border-t-4 border-t-electronic hover:-translate-y-2 transition-transform fade-in-up delay-100">
+                    <div class="flex items-center justify-between mb-6">
+                        <h4 class="text-2xl font-bold text-electronic">Electrónicos</h4>
+                        <div class="w-12 h-12 rounded-full bg-electronic/20 flex items-center justify-center text-electronic">
+                            <i class="fa-solid fa-mobile-screen text-xl"></i>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 text-slate-300">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-electronic mr-3"></i> Teléfonos móviles</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-electronic mr-3"></i> TV's antiguas</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-electronic mr-3"></i> Laptops y tablets</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-electronic mr-3"></i> Cables y cargadores</li>
+                    </ul>
+                </div>
+
+                <!-- Biodegradable -->
+                <div class="glass-card bg-slate-800/50 p-8 rounded-3xl border-t-4 border-t-bio hover:-translate-y-2 transition-transform fade-in-up delay-200">
+                    <div class="flex items-center justify-between mb-6">
+                        <h4 class="text-2xl font-bold text-bio">Biodegradable</h4>
+                        <div class="w-12 h-12 rounded-full bg-bio/20 flex items-center justify-center text-bio">
+                            <i class="fa-brands fa-pagelines text-xl"></i>
+                        </div>
+                    </div>
+                    <ul class="space-y-3 text-slate-300">
+                        <li class="flex items-center"><i class="fa-solid fa-check text-bio mr-3"></i> Cáscaras de fruta/verdura/huevo</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-bio mr-3"></i> Papel y Cartón</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-bio mr-3"></i> Algodón</li>
+                        <li class="flex items-center"><i class="fa-solid fa-check text-bio mr-3"></i> Aserrín</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="negocio" class="py-20 bg-slate-50">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <span class="text-eco font-bold tracking-wider uppercase text-sm">Esquema de modelo de Negocios</span>
+                <h2 class="text-4xl font-bold text-slate-900 mt-2">Plan de Negocios a Profundidad</h2>
+                <p class="text-lg text-slate-600 mt-4 max-w-3xl mx-auto">Estructuración estratégica para asegurar la viabilidad, escalabilidad y el impacto positivo del proyecto EcoPuntos en la comunidad y con nuestros aliados.</p>
+            </div>
+
+            <!-- CSS Grid representing the Business Model Canvas -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-4 lg:grid-rows-2 fade-in-up">
+                
+                <!-- Socios Clave (Left Column) -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 lg:row-span-2 hover:shadow-md transition-shadow">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fa-solid fa-handshake text-2xl text-blue-500"></i>
+                        <h3 class="font-bold text-slate-800">Socios Clave</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        <li class="flex gap-2"><i class="fa-solid fa-building-columns text-slate-400 mt-1"></i> Universidades, preparatorias y primarias.</li>
+                        <li class="flex gap-2"><i class="fa-solid fa-plug text-slate-400 mt-1"></i> Proveedores de hardware (Steren).</li>
+                        <li class="flex gap-2"><i class="fa-solid fa-server text-slate-400 mt-1"></i> Servicios Cloud (Firebase, Vercel).</li>
+                        <li class="flex gap-2"><i class="fa-solid fa-robot text-slate-400 mt-1"></i> Proveedores de APIs de Inteligencia Artificial.</li>
+                    </ul>
+                </div>
+
+                <!-- Actividades y Recursos (Middle Left Column) -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fa-solid fa-gears text-2xl text-indigo-500"></i>
+                        <h3 class="font-bold text-slate-800">Actividades Clave</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        <li class="flex gap-2"><i class="fa-solid fa-magnifying-glass text-slate-400 mt-1"></i> Identificación precisa de tipos de desechos vía IA/Sensores.</li>
+                        <li class="flex gap-2"><i class="fa-solid fa-truck-ramp-box text-slate-400 mt-1"></i> Logística de recolección de distintos materiales.</li>
+                        <li class="flex gap-2"><i class="fa-solid fa-code text-slate-400 mt-1"></i> Mantenimiento de la plataforma web y base de datos.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fa-solid fa-box text-2xl text-indigo-500"></i>
+                        <h3 class="font-bold text-slate-800">Recursos Clave</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        <li class="flex gap-2"><i class="fa-solid fa-microchip text-slate-400 mt-1"></i> Componentes electrónicos y contenedores físicos.</li>
+                        <li class="flex gap-2"><i class="fa-solid fa-id-card text-slate-400 mt-1"></i> Integración con credencial de estudiantes UDG.</li>
+                        <li class="flex gap-2"><i class="fa-solid fa-brain text-slate-400 mt-1"></i> Algoritmos e IA para validación.</li>
+                    </ul>
+                </div>
+
+                <!-- Propuesta de Valor (Center Column) -->
+                <div class="bg-eco p-6 rounded-xl shadow-md lg:row-span-2 text-white flex flex-col justify-center transform transition-transform hover:scale-105">
+                    <div class="flex flex-col items-center gap-3 mb-6 text-center">
+                        <div class="w-16 h-16 bg-white/20 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-gift text-3xl text-white"></i>
+                        </div>
+                        <h3 class="font-bold text-xl">Propuesta de Valor</h3>
+                    </div>
+                    <p class="text-center font-medium leading-relaxed">
+                        Incentivar a la comunidad de la Universidad de Guadalajara (y otras instituciones) para administrar mejor los desechos mediante un sistema de gamificación que transforma la basura en beneficios tangibles (ej. liberación de horas).
+                    </p>
+                </div>
+
+                <!-- Relacion y Canales (Middle Right Column) -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fa-solid fa-heart text-2xl text-pink-500"></i>
+                        <h3 class="font-bold text-slate-800">Relación con Clientes</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        <li class="flex gap-2"><i class="fa-solid fa-globe text-slate-400 mt-1"></i> Interacción constante a través del Sitio Web y portal de usuario.</li>
+                        <li class="flex gap-2"><i class="fa-solid fa-school text-slate-400 mt-1"></i> Relación B2B directa con las instituciones asociadas.</li>
+                        <li class="flex gap-2"><i class="fa-solid fa-users text-slate-400 mt-1"></i> Crecimiento orgánico por recomendaciones entre estudiantes.</li>
+                    </ul>
+                </div>
+
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 hover:shadow-md transition-shadow">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fa-solid fa-truck-fast text-2xl text-pink-500"></i>
+                        <h3 class="font-bold text-slate-800">Canales de Distribución</h3>
+                    </div>
+                    <ul class="space-y-3 text-sm text-slate-600">
+                        <li class="flex gap-2"><i class="fa-solid fa-hashtag text-slate-400 mt-1"></i> Redes Sociales para difusión y campañas.</li>
+                        <li class="flex gap-2"><i class="fa-solid fa-laptop-code text-slate-400 mt-1"></i> Eventos tipo Bootcamp.</li>
+                        <li class="flex gap-2"><i class="fa-solid fa-cart-shopping text-slate-400 mt-1"></i> Venta corporativa en la página web y gestión en persona.</li>
+                    </ul>
+                </div>
+
+                <!-- Segmentos (Right Column) -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 lg:row-span-2 hover:shadow-md transition-shadow">
+                    <div class="flex items-center gap-3 mb-4">
+                        <i class="fa-solid fa-users-target text-2xl text-orange-500"></i>
+                        <h3 class="font-bold text-slate-800">Segmentos de Mercado</h3>
+                    </div>
+                    <ul class="space-y-4 text-sm text-slate-600">
+                        <li class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+                            <strong>Instituciones:</strong> Las universidades/escuelas que adquieren el bote inteligente para sus campus.
+                        </li>
+                        <li class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+                            <strong>Usuarios Finales:</strong> Estudiantes que depositan la basura para liberar horas y ganar recompensas.
+                        </li>
+                        <li class="bg-slate-50 p-3 rounded-lg border border-slate-100">
+                            <strong>Industria Recicladora:</strong> Centros de acopio y recicladoras que compran el material ya clasificado.
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Bottom Row: Costs and Revenue -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4 fade-in-up delay-100">
+                <!-- Estructura de Costes -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex gap-4 hover:shadow-md transition-shadow">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 bg-red-100 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-money-bill-wave text-xl text-red-600"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-800 mb-2">Estructura de Costes</h3>
+                        <p class="text-sm text-slate-600">Costos de manufactura por contenedor físico. Mantenimiento técnico. Infraestructura digital (Base de datos y Hosting de la plataforma web).</p>
+                    </div>
+                </div>
+
+                <!-- Fuentes de Ingresos -->
+                <div class="bg-white p-6 rounded-xl shadow-sm border border-slate-200 flex gap-4 hover:shadow-md transition-shadow">
+                    <div class="flex-shrink-0">
+                        <div class="w-12 h-12 bg-green-100 rounded-full flex items-center justify-center">
+                            <i class="fa-solid fa-sack-dollar text-xl text-green-600"></i>
+                        </div>
+                    </div>
+                    <div>
+                        <h3 class="font-bold text-slate-800 mb-2">Fuentes de Ingresos & Tarifas</h3>
+                        <p class="text-sm text-slate-600">
+                            Patrocinios y donaciones: SECHITY, Casa Cem, Greenpeace México. Inversión de Empresas ESR (Empresas Socialmente Responsables) y Banco Interamericano de Desarrollo. Venta de materiales a recicladoras.
+                        </p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </section>
+
+    <section id="equipo" class="py-20 bg-white">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="text-center mb-16 fade-in-up">
+                <h2 class="text-3xl font-bold text-slate-900">Conoce a los integrantes de este proyecto</h2>
+                <p class="text-lg text-slate-600 mt-4">Las mentes detrás de EcoPuntos, trabajando por un futuro más sostenible.</p>
+            </div>
+
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-8 fade-in-up delay-100">
+                <!-- Team Member 1 -->
+                <div class="text-center group">
+                    <div class="w-24 h-24 mx-auto bg-slate-100 rounded-full flex items-center justify-center mb-4 text-3xl text-slate-400 group-hover:bg-eco group-hover:text-white transition-colors shadow-inner">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-800">Angel Rayan</h3>
+                </div>
+                <!-- Team Member 2 -->
+                <div class="text-center group">
+                    <div class="w-24 h-24 mx-auto bg-slate-100 rounded-full flex items-center justify-center mb-4 text-3xl text-slate-400 group-hover:bg-eco group-hover:text-white transition-colors shadow-inner">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-800">Paola Gonzalez</h3>
+                </div>
+                <!-- Team Member 3 -->
+                <div class="text-center group">
+                    <div class="w-24 h-24 mx-auto bg-slate-100 rounded-full flex items-center justify-center mb-4 text-3xl text-slate-400 group-hover:bg-eco group-hover:text-white transition-colors shadow-inner">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-800">Chloe Aramburo</h3>
+                </div>
+                <!-- Team Member 4 -->
+                <div class="text-center group">
+                    <div class="w-24 h-24 mx-auto bg-slate-100 rounded-full flex items-center justify-center mb-4 text-3xl text-slate-400 group-hover:bg-eco group-hover:text-white transition-colors shadow-inner">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-800">Samantha Vega</h3>
+                </div>
+                <!-- Team Member 5 -->
+                <div class="text-center group">
+                    <div class="w-24 h-24 mx-auto bg-slate-100 rounded-full flex items-center justify-center mb-4 text-3xl text-slate-400 group-hover:bg-eco group-hover:text-white transition-colors shadow-inner">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-800">Karen Osorio</h3>
+                </div>
+                <!-- Team Member 6 -->
+                <div class="text-center group">
+                    <div class="w-24 h-24 mx-auto bg-slate-100 rounded-full flex items-center justify-center mb-4 text-3xl text-slate-400 group-hover:bg-eco group-hover:text-white transition-colors shadow-inner">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-800">Camila Ornelas</h3>
+                </div>
+                <!-- Team Member 7 -->
+                <div class="text-center group md:col-span-2 flex flex-col items-center">
+                    <div class="w-24 h-24 mx-auto bg-slate-100 rounded-full flex items-center justify-center mb-4 text-3xl text-slate-400 group-hover:bg-eco group-hover:text-white transition-colors shadow-inner">
+                        <i class="fa-solid fa-user"></i>
+                    </div>
+                    <h3 class="font-bold text-slate-800">Naomi Harumi Rea Calvillo</h3>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="bg-slate-900 text-slate-400 py-12 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
+            <div class="flex items-center justify-center gap-2 mb-6">
+                <i class="fa-solid fa-leaf text-2xl text-eco"></i>
+                <span class="font-bold text-xl text-white">EcoPuntos</span>
+            </div>
+            <p class="mb-6 max-w-md mx-auto">Proyecto Universitario de Innovación Tecnologica<br>Acciones por el clima (ODS 13).</p>
+            <div class="flex justify-center space-x-6">
+                <a href="#" class="text-slate-400 hover:text-white transition-colors"><span class="sr-only">Facebook</span><i class="fa-brands fa-facebook text-xl"></i></a>
+                <a href="#" class="text-slate-400 hover:text-white transition-colors"><span class="sr-only">Instagram</span><i class="fa-brands fa-instagram text-xl"></i></a>
+                <a href="#" class="text-slate-400 hover:text-white transition-colors"><span class="sr-only">Twitter</span><i class="fa-brands fa-twitter text-xl"></i></a>
+            </div>
+            <p class="mt-8 text-sm">
+                &copy; 2026 EcoPuntos. Todos los derechos reservados. Conceptualizado por estudiantes de la Universidad de Guadalajara.
+            </p>
+        </div>
+    </footer>
+
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            
+            // Mobile Menu Toggle
+            const btn = document.getElementById('mobile-menu-btn');
+            const menu = document.getElementById('mobile-menu');
+
+            btn.addEventListener('click', () => {
+                menu.classList.toggle('hidden');
+            });
+
+            // Close mobile menu on link click
+            const mobileLinks = menu.querySelectorAll('a');
+            mobileLinks.forEach(link => {
+                link.addEventListener('click', () => {
+                    menu.classList.add('hidden');
+                });
+            });
+
+            // Navbar scroll effect
+            const navbar = document.getElementById('navbar');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 20) {
+                    navbar.classList.add('shadow-md');
+                } else {
+                    navbar.classList.remove('shadow-md');
+                }
+            });
+
+            // Intersection Observer for scroll animations (fade-in-up)
+            const observerOptions = {
+                root: null,
+                rootMargin: '0px',
+                threshold: 0.1
+            };
+
+            const observer = new IntersectionObserver((entries, observer) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('visible');
+                        observer.unobserve(entry.target); // Stop observing once animated
+                    }
+                });
+            }, observerOptions);
+
+            const fadeElements = document.querySelectorAll('.fade-in-up');
+            fadeElements.forEach(el => {
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
